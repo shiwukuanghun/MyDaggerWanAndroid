@@ -1,6 +1,7 @@
 package com.wujie.minewanandroid.ui.activity.register;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +48,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterCo
     @Override
     protected void init() {
         mActivityComponent.inject(this);
+        super.init();
     }
 
     @OnClick(R.id.btn_register)

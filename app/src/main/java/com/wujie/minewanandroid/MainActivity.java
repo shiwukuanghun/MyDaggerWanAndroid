@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 
 import com.wujie.minewanandroid.adapter.HomeAdapter;
 import com.wujie.minewanandroid.bean.HomeBean;
+import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.ui.fragment.knowledage.KnowledgeFragment;
 import com.wujie.minewanandroid.ui.fragment.MineFragment;
 import com.wujie.minewanandroid.ui.fragment.navigation.NavigationFragment;
@@ -24,7 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = "MainActivity";
 //    @BindView(R.id.rv)
@@ -44,83 +45,28 @@ LinearLayout mActivityMain;
     @BindView(R.id.rg_container)
     RadioGroup mRgContainer;
 
-    private List<HomeBean> mDataList;
-    private HomeAdapter mHomeAdapter;
     private HomeFragment mHomeFragment;
     private KnowledgeFragment mKnowledgeFragment;
     private NavigationFragment mNavigationFragment;
     private ProjectFragment mProjectFragment;
     private MineFragment mMineFragment;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
+    @Override
+    protected void init() {
+        super.init();
         mRgContainer.setOnCheckedChangeListener(this);
         mRgContainer.check(R.id.rb_home);
+    }
 
-        mDataList = new ArrayList<>();
-//
-//        mRv.setLayoutManager(new LinearLayoutManager(this));
-//        mRv.setHasFixedSize(true);
-//        mHomeAdapter = new HomeAdapter(mDataList);
-//        mRv.setAdapter(mHomeAdapter);
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
-//        RxRetrofit.createApi(ApiServer.class, Constant.BaseUrl)
-//                .getHomeList(0)
-//                .compose(RxHelper.<BaseBean<PageListDataBean<HomeBean>>>rxSchedulderHelper())
-//                .subscribe(new Observer<BaseBean<PageListDataBean<HomeBean>>>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(BaseBean<PageListDataBean<HomeBean>> value) {
-//                        Log.d(TAG, "onNext: 请求成功");
-//                        PageListDataBean<HomeBean> data = value.getData();
-//                        List<HomeBean> datas = data.getDatas();
-//                        mDataList.addAll(datas);
-//                        mHomeAdapter.notifyDataSetChanged();
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
-//
-//        RxRetrofit.createApi(ApiServer.class, Constant.BaseUrl)
-//                .getBanner()
-//                .compose(RxHelper.<BaseBean<List<BannerBean>>>rxSchedulderHelper())
-//                .subscribe(new Observer<BaseBean<List<BannerBean>>>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(BaseBean<List<BannerBean>> value) {
-//                        Log.d(TAG, "onNext: 成功" + value);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

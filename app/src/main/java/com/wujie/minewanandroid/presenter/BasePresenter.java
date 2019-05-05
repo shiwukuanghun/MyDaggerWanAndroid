@@ -22,7 +22,10 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
 
     @Override
     public void detachView() {
-         mV = null;
+        mV = null;
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.clear();
+        }
     }
 
     @Override
@@ -39,7 +42,7 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
 
     @Override
     public void addDisposable(Disposable disposable) {
-        if (mCompositeDisposable==null) {
+        if (mCompositeDisposable == null) {
             mCompositeDisposable = new CompositeDisposable();
         }
         mCompositeDisposable.add(disposable);
@@ -47,14 +50,14 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
 
     @Override
     public void removeDisposable(Disposable disposable) {
-        if (mCompositeDisposable!=null) {
+        if (mCompositeDisposable != null) {
             mCompositeDisposable.remove(disposable);
         }
     }
 
     @Override
     public void removeAllDisposable() {
-        if (mCompositeDisposable!=null) {
+        if (mCompositeDisposable != null) {
             mCompositeDisposable.clear();
         }
     }

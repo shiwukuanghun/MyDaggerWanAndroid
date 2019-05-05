@@ -48,16 +48,17 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends IBaseVi
         setSwipeBackEnable(true);
 //        mPresenter = createPresenter();
         init();
-        if (null != mPresenter) {
-            mPresenter.attachView((V) this);
-        }
     }
 
     protected abstract int getLayoutId();
 
     protected abstract P createPresenter();
 
-    protected abstract void init();
+    protected void init() {
+        if (null != mPresenter) {
+            mPresenter.attachView((V) this);
+        }
+    }
 
     protected void addDisposable(Disposable disposable) {
         if (mCompositeDisposable == null) {

@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginContact.Vie
     @Override
     protected void init() {
         mActivityComponent.inject(this);
+        super.init();
         StatusBarUtil.setColor(this, Color.BLACK);
         StatusBarUtil.setDarkMode(this); //白字
         StatusBarUtil.setLightMode(this); //黑字
