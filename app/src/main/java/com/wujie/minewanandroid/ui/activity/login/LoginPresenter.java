@@ -6,7 +6,14 @@ import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.ui.activity.login.LoginContact;
 import com.wujie.minewanandroid.util.RxHelper;
 
+import javax.inject.Inject;
+
 public class LoginPresenter extends BasePresenter<LoginContact.View> implements LoginContact.Presenter {
+
+    @Inject
+    public LoginPresenter() {
+    }
+
     @Override
     public void login(String username, String password) {
         addDisposable(RxRetrofit.getApi()

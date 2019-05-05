@@ -6,12 +6,19 @@ import com.wujie.minewanandroid.http.RxRetrofit;
 import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.util.RxHelper;
 
+import javax.inject.Inject;
+
 /**
  * Time：2019/1/16 0016 上午 10:09
  * Author：WuChen
  * Description：
  **/
 public class RegisterPresenter extends BasePresenter<RegisterContact.View> implements RegisterContact.Presenter {
+
+    @Inject
+    public RegisterPresenter() {
+    }
+
     @Override
     public void register(String username, String password, String repassword) {
         addDisposable(RxRetrofit.getApi()

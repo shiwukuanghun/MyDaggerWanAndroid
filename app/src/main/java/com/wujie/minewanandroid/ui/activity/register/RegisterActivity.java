@@ -46,7 +46,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterCo
 
     @Override
     protected void init() {
-
+        mActivityComponent.inject(this);
     }
 
     @OnClick(R.id.btn_register)

@@ -9,10 +9,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wujie.minewanandroid.di.component.ActivityComponent;
+import com.wujie.minewanandroid.di.component.DaggerActivityComponent;
 import com.wujie.minewanandroid.loading.LoadingController;
 import com.wujie.minewanandroid.loading.LoadingInterface;
 import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.view.IBaseView;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;
@@ -26,10 +30,12 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 public abstract class BaseActivity<P extends BasePresenter<V>, V extends IBaseView> extends SwipeBackActivity implements IBaseView {
 
+    @Inject
     protected P mPresenter;
     protected Context mContext;
     protected CompositeDisposable mCompositeDisposable;
     protected LoadingController mLoadingController;
+    protected ActivityComponent mActivityComponent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,12 +43,14 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends IBaseVi
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         mContext = this;
+        mActivityComponent = DaggerActivityComponent.builder().applicationComponent(MyApplication.getInstance().getApplicationComponent())
+                .build();
         setSwipeBackEnable(true);
-        mPresenter = createPresenter();
+//        mPresenter = createPresenter();
+        init();
         if (null != mPresenter) {
             mPresenter.attachView((V) this);
         }
-        init();
     }
 
     protected abstract int getLayoutId();

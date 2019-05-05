@@ -92,4 +92,8 @@ dependencies {
 
     //rxBinding
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha2'
+
+    //dagger2
+    api 'com.google.dagger:dagger:2.22.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.22.1'
 }

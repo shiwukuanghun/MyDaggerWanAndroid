@@ -12,6 +12,9 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.wujie.minewanandroid.di.component.ApplicationComponent;
+import com.wujie.minewanandroid.di.component.DaggerApplicationComponent;
+import com.wujie.minewanandroid.di.module.ApplicationModule;
 
 /**
  * Created by HuangBin on 2018/12/1 20:46.
@@ -20,11 +23,16 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 public class MyApplication extends Application {
 
     private static MyApplication sMyApplication;
+    private ApplicationComponent mApplicationComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
         AppContext.init(this);
+
+        mApplicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this))
+                .build();
+
         sMyApplication = this;
 
         if (true) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
@@ -57,5 +65,9 @@ public class MyApplication extends Application {
                 return new ClassicsFooter(context).setDrawableSize(20);
             }
         });
+    }
+
+    public ApplicationComponent getApplicationComponent() {
+        return mApplicationComponent;
     }
 }
