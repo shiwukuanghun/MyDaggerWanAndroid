@@ -45,6 +45,8 @@ public class KnowledgeFragment extends BaseFragment<KnowledgePresenter, Knowledg
 
     @Override
     protected void init(View view) {
+        mFragmentComponent.inject(this);
+        super.init(view);
         initLoading(mMsl);
         List<KnowledgeBean> knowledgeBeanList = new ArrayList<>();
         mRvKnowledge.setHasFixedSize(true);

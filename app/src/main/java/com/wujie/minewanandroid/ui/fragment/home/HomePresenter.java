@@ -11,11 +11,18 @@ import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.util.Constant;
 import com.wujie.minewanandroid.util.RxHelper;
 
+import javax.inject.Inject;
+
 /**
  * Created by HuangBin on 2018/11/29 22:08.
  * Description：
  */
 public class HomePresenter extends BasePresenter<HomeContact.View> implements HomeContact.Presenter {
+
+    @Inject
+    public HomePresenter() {
+    }
+
     @Override
     public void getHomeList(int page) {
         RxObserver<PageListDataBean<HomeBean>> rxObserver = new RxObserver<PageListDataBean<HomeBean>>(this) {

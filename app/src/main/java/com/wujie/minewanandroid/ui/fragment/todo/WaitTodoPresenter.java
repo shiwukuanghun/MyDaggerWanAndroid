@@ -8,12 +8,19 @@ import com.wujie.minewanandroid.http.RxRetrofit;
 import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.util.RxHelper;
 
+import javax.inject.Inject;
+
 /**
  * Time：2019/1/23 0023 下午 15:30
  * Author：WuChen
  * Description：
  **/
 public class WaitTodoPresenter extends BasePresenter<WaiteTodoContact.View> implements WaiteTodoContact.Presenter {
+
+    @Inject
+    public WaitTodoPresenter() {
+    }
+
     @Override
     public void getTodoList(int page, int status, int type, int priority, int orderby) {
         addDisposable(RxRetrofit.getApi()

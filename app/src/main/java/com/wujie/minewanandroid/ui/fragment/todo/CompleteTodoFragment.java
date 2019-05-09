@@ -25,7 +25,6 @@ public class CompleteTodoFragment extends BaseFragment {
     RecyclerView mRvTodo;
     @BindView(R.id.srl)
     SmartRefreshLayout mSrl;
-    Unbinder unbinder;
 
     @Override
     protected int getLayoutId() {
@@ -42,17 +41,4 @@ public class CompleteTodoFragment extends BaseFragment {
         return null;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }

@@ -45,6 +45,8 @@ public class HomeFragment extends BaseFragment<HomePresenter, HomeContact.View> 
 
     @Override
     protected void init(View view) {
+        mFragmentComponent.inject(this);
+        super.init(view);
         mDataList = new ArrayList<>();
         mRvHome.setHasFixedSize(true);
         mRvHome.setLayoutManager(new LinearLayoutManager(getContext()));

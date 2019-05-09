@@ -9,10 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.wujie.minewanandroid.MyApplication;
 import com.wujie.minewanandroid.R;
+import com.wujie.minewanandroid.di.component.DaggerFragmentComponent;
+import com.wujie.minewanandroid.di.component.FragmentComponent;
 import com.wujie.minewanandroid.loading.LoadingController;
 import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.view.IBaseView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,24 +29,21 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseView> extends Fragment implements IBaseView {
 
+    @Inject
     protected P mPresenter;
     protected LoadingController mLoadingController;
     Unbinder unbinder;
+    protected FragmentComponent mFragmentComponent;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
         unbinder = ButterKnife.bind(this, view);
+        mFragmentComponent = DaggerFragmentComponent.builder().applicationComponent(MyApplication.getInstance().getApplicationComponent())
+                .build();
         init(view);
         return view;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mPresenter = createPresenter();
-        attachView();
     }
 
     private void attachView() {
@@ -60,7 +62,9 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseVi
 
     protected abstract P createPresenter();
 
-    protected abstract void init(View view);
+    protected void init(View view) {
+        attachView();
+    }
 
     @Override
     public void onDestroy() {

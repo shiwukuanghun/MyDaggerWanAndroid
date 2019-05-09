@@ -41,6 +41,8 @@ public class WaitTodoFragment extends BaseFragment<WaitTodoPresenter, WaiteTodoC
 
     @Override
     protected void init(View view) {
+        mFragmentComponent.inject(this);
+        super.init(view);
         List<TodoSection> todoSectionList = new ArrayList<>();
         mWaitTodoAdapter = new WaitTodoAdapter(R.layout.item_wait_todo, R.layout.item_wait_todo_header, todoSectionList);
         mRvTodo.setHasFixedSize(true);

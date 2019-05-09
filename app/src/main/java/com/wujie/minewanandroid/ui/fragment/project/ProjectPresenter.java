@@ -8,12 +8,19 @@ import com.wujie.minewanandroid.util.RxHelper;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Time：2019/1/14 0014 下午 17:38
  * Author：WuChen
  * Description：
  **/
 public class ProjectPresenter extends BasePresenter<ProjectContact.View> implements ProjectContact.Presenter {
+
+    @Inject
+    public ProjectPresenter() {
+    }
+
     @Override
     public void getProjectType() {
         addDisposable(RxRetrofit.getApi()

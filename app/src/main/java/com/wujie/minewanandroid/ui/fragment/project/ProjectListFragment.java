@@ -48,6 +48,8 @@ public class ProjectListFragment extends BaseFragment<ProjectListPresenter, Proj
 
     @Override
     protected void init(View view) {
+        mFragmentComponent.inject(this);
+        super.init(view);
         initLoading(mSrlProject);
         Bundle bundle = getArguments();
         int id = bundle.getInt("ID");

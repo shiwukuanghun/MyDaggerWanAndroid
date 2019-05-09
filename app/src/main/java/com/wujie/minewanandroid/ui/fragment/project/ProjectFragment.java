@@ -39,6 +39,8 @@ public class ProjectFragment extends BaseFragment<ProjectPresenter, ProjectConta
 
     @Override
     protected void init(View view) {
+        mFragmentComponent.inject(this);
+        super.init(view);
         mProjectTypeBeanList = new ArrayList<>();
         mPresenter.getProjectType();
     }

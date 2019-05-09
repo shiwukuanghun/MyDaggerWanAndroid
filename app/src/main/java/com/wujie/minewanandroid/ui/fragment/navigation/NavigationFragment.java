@@ -51,6 +51,8 @@ public class NavigationFragment extends BaseFragment<NavigationPresenter, Naviga
 
     @Override
     protected void init(View view) {
+        mFragmentComponent.inject(this);
+        super.init(view);
         initLoading(mLlContainer);
         List<NavigationBean> list = new ArrayList<>();
         mRvNavigation.setHasFixedSize(true);

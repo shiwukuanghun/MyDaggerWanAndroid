@@ -8,12 +8,19 @@ import com.wujie.minewanandroid.util.RxHelper;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Time：2019/1/25 0025 下午 18:10
  * Author：WuChen
  * Description：
  **/
 public class NavigationPresenter extends BasePresenter<NavigationContact.View> implements NavigationContact.Presenter {
+
+    @Inject
+    public NavigationPresenter() {
+    }
+
     @Override
     public void getNavigation() {
         addDisposable(RxRetrofit.getApi()

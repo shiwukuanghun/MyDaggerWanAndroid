@@ -8,12 +8,19 @@ import com.wujie.minewanandroid.util.RxHelper;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Time：2019/1/11 0011 上午 10:57
  * Author：WuChen
  * Description：
  **/
 public class KnowledgePresenter extends BasePresenter<KnowledgeContact.View> implements KnowledgeContact.Presenter {
+
+    @Inject
+    public KnowledgePresenter() {
+    }
+
     @Override
     public void getKnowledge() {
         addDisposable(RxRetrofit.getApi()
