@@ -36,9 +36,4 @@ public class CompleteTodoFragment extends BaseFragment {
 
     }
 
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
-    }
-
 }

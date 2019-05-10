@@ -46,12 +46,6 @@ public class ProjectFragment extends BaseFragment<ProjectPresenter, ProjectConta
     }
 
     @Override
-    protected ProjectPresenter createPresenter() {
-        return new ProjectPresenter();
-    }
-
-
-    @Override
     public void getProjectType(List<ProjectTypeBean> projectTypeBeanList) {
         if (projectTypeBeanList!=null && projectTypeBeanList.size()>0) {
             mProjectTypeBeanList.addAll(projectTypeBeanList);

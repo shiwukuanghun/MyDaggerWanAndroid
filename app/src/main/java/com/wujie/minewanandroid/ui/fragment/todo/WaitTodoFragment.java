@@ -52,11 +52,6 @@ public class WaitTodoFragment extends BaseFragment<WaitTodoPresenter, WaiteTodoC
     }
 
     @Override
-    protected WaitTodoPresenter createPresenter() {
-        return new WaitTodoPresenter();
-    }
-
-    @Override
     public void getTodoListSuccess(PageListDataBean<TodoBean> pageListDataBean) {
         List<TodoSection> todoSectionList = new ArrayList<>();
         LinkedHashSet<String> headers = new LinkedHashSet<>();

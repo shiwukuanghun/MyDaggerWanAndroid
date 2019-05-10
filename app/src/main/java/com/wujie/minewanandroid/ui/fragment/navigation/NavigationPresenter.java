@@ -1,6 +1,7 @@
 package com.wujie.minewanandroid.ui.fragment.navigation;
 
 import com.wujie.minewanandroid.bean.NavigationBean;
+import com.wujie.minewanandroid.data.DataManager;
 import com.wujie.minewanandroid.http.BaseObserver;
 import com.wujie.minewanandroid.http.RxRetrofit;
 import com.wujie.minewanandroid.presenter.BasePresenter;
@@ -17,32 +18,55 @@ import javax.inject.Inject;
  **/
 public class NavigationPresenter extends BasePresenter<NavigationContact.View> implements NavigationContact.Presenter {
 
+    private DataManager mDataManager;
+
     @Inject
-    public NavigationPresenter() {
+    public NavigationPresenter(DataManager dataManager) {
+        mDataManager = dataManager;
     }
 
     @Override
     public void getNavigation() {
-        addDisposable(RxRetrofit.getApi()
-                .getNavigation()
-                .compose(RxHelper.rxSchedulderHelper())
-                .compose(RxHelper.handleResult2())
-                .subscribeWith(new BaseObserver<List<NavigationBean>>() {
-                    @Override
-                    protected void start() {
-                        mV.showLoading("");
-                    }
+        addDisposable(mDataManager.getNavigation()
+        .compose(RxHelper.rxSchedulderHelper())
+        .compose(RxHelper.handleResult2())
+        .subscribeWith(new BaseObserver<List<NavigationBean>>() {
+            @Override
+            protected void start() {
+                mV.showLoading("");
+            }
 
-                    @Override
-                    protected void onSuccess(List<NavigationBean> navigationBeans) {
-                        mV.hideLoading();
-                        mV.getNavigationSuccess(navigationBeans);
-                    }
+            @Override
+            protected void onSuccess(List<NavigationBean> navigationBeans) {
+                mV.hideLoading();
+                mV.getNavigationSuccess(navigationBeans);
+            }
 
-                    @Override
-                    protected void onFailure(int errorCode, String errorMsg) {
-                        mV.showEmpty();
-                    }
-                }));
+            @Override
+            protected void onFailure(int errorCode, String errorMsg) {
+                mV.showEmpty();
+            }
+        }));
+//        addDisposable(RxRetrofit.getApi()
+//                .getNavigation()
+//                .compose(RxHelper.rxSchedulderHelper())
+//                .compose(RxHelper.handleResult2())
+//                .subscribeWith(new BaseObserver<List<NavigationBean>>() {
+//                    @Override
+//                    protected void start() {
+//                        mV.showLoading("");
+//                    }
+//
+//                    @Override
+//                    protected void onSuccess(List<NavigationBean> navigationBeans) {
+//                        mV.hideLoading();
+//                        mV.getNavigationSuccess(navigationBeans);
+//                    }
+//
+//                    @Override
+//                    protected void onFailure(int errorCode, String errorMsg) {
+//                        mV.showEmpty();
+//                    }
+//                }));
     }
 }

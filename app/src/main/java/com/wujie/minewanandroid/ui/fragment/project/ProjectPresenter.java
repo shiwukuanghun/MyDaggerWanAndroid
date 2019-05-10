@@ -1,6 +1,7 @@
 package com.wujie.minewanandroid.ui.fragment.project;
 
 import com.wujie.minewanandroid.bean.ProjectTypeBean;
+import com.wujie.minewanandroid.data.DataManager;
 import com.wujie.minewanandroid.http.BaseObserver;
 import com.wujie.minewanandroid.http.RxRetrofit;
 import com.wujie.minewanandroid.presenter.BasePresenter;
@@ -17,14 +18,16 @@ import javax.inject.Inject;
  **/
 public class ProjectPresenter extends BasePresenter<ProjectContact.View> implements ProjectContact.Presenter {
 
+    private DataManager mDataManager;
+
     @Inject
-    public ProjectPresenter() {
+    public ProjectPresenter(DataManager dataManager) {
+        mDataManager = dataManager;
     }
 
     @Override
     public void getProjectType() {
-        addDisposable(RxRetrofit.getApi()
-                .getProjectType()
+        addDisposable(mDataManager.getProjectType()
                 .compose(RxHelper.rxSchedulderHelper())
                 .compose(RxHelper.handleResult2())
                 .subscribeWith(new BaseObserver<List<ProjectTypeBean>>() {
@@ -43,5 +46,25 @@ public class ProjectPresenter extends BasePresenter<ProjectContact.View> impleme
 
                     }
                 }));
+//        addDisposable(RxRetrofit.getApi()
+//                .getProjectType()
+//                .compose(RxHelper.rxSchedulderHelper())
+//                .compose(RxHelper.handleResult2())
+//                .subscribeWith(new BaseObserver<List<ProjectTypeBean>>() {
+//                    @Override
+//                    protected void start() {
+//
+//                    }
+//
+//                    @Override
+//                    protected void onSuccess(List<ProjectTypeBean> projectTypeBeans) {
+//                        mV.getProjectType(projectTypeBeans);
+//                    }
+//
+//                    @Override
+//                    protected void onFailure(int errorCode, String errorMsg) {
+//
+//                    }
+//                }));
     }
 }

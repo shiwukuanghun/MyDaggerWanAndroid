@@ -3,21 +3,17 @@ package com.wujie.minewanandroid;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.wujie.minewanandroid.di.component.ActivityComponent;
 import com.wujie.minewanandroid.di.component.DaggerActivityComponent;
 import com.wujie.minewanandroid.loading.LoadingController;
 import com.wujie.minewanandroid.loading.LoadingInterface;
 import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.view.IBaseView;
-
 import javax.inject.Inject;
-
 import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -46,13 +42,10 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends IBaseVi
         mActivityComponent = DaggerActivityComponent.builder().applicationComponent(MyApplication.getInstance().getApplicationComponent())
                 .build();
         setSwipeBackEnable(true);
-//        mPresenter = createPresenter();
         init();
     }
 
     protected abstract int getLayoutId();
-
-    protected abstract P createPresenter();
 
     protected void init() {
         if (null != mPresenter) {

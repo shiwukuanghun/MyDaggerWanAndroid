@@ -6,18 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import com.wujie.minewanandroid.R;
 import com.wujie.minewanandroid.adapter.NavigationAdapter;
 import com.wujie.minewanandroid.bean.NavigationBean;
 import com.wujie.minewanandroid.ui.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import q.rorbin.verticaltablayout.VerticalTabLayout;
 import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.ITabView;
@@ -35,18 +30,12 @@ public class NavigationFragment extends BaseFragment<NavigationPresenter, Naviga
     RecyclerView mRvNavigation;
     @BindView(R.id.ll_container)
     LinearLayout mLlContainer;
-    Unbinder unbinder;
     private NavigationAdapter mNavigationAdapter;
     private LinearLayoutManager mLayoutManager;
 
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_navigation;
-    }
-
-    @Override
-    protected NavigationPresenter createPresenter() {
-        return new NavigationPresenter();
     }
 
     @Override

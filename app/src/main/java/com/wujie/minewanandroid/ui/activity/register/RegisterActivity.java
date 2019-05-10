@@ -1,20 +1,14 @@
 package com.wujie.minewanandroid.ui.activity.register;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wujie.minewanandroid.BaseActivity;
 import com.wujie.minewanandroid.R;
-import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.util.ARouterUtils;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -38,11 +32,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter, RegisterCo
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register;
-    }
-
-    @Override
-    protected RegisterPresenter createPresenter() {
-        return new RegisterPresenter();
     }
 
     @Override

@@ -5,13 +5,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wujie.minewanandroid.BaseActivity;
 import com.wujie.minewanandroid.R;
 import com.wujie.minewanandroid.bean.TodoBean;
 import com.wujie.minewanandroid.util.ARouterUtils;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -36,11 +34,6 @@ public class AddTodoActivity extends BaseActivity<AddTodoPresenter, AddTodoConta
     @Override
     protected int getLayoutId() {
         return R.layout.activity_add_todo;
-    }
-
-    @Override
-    protected AddTodoPresenter createPresenter() {
-        return new AddTodoPresenter();
     }
 
     @Override

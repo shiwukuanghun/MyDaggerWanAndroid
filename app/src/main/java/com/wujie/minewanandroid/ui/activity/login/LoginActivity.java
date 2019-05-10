@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jaeger.library.StatusBarUtil;
 import com.jakewharton.rxbinding3.InitialValueObservable;
@@ -13,7 +12,6 @@ import com.jakewharton.rxbinding3.widget.RxTextView;
 import com.wujie.minewanandroid.BaseActivity;
 import com.wujie.minewanandroid.R;
 import com.wujie.minewanandroid.util.ARouterUtils;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observable;
@@ -33,11 +31,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginContact.Vie
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
-    }
-
-    @Override
-    protected LoginPresenter createPresenter() {
-        return new LoginPresenter();
     }
 
     @Override

@@ -33,10 +33,10 @@ public class KnowledgeFragment extends BaseFragment<KnowledgePresenter, Knowledg
     SmartRefreshLayout mMsl;
     private KnowledgeAdapter mKnowledgeAdapter;
 
-    @Override
-    protected KnowledgePresenter createPresenter() {
-        return new KnowledgePresenter();
-    }
+//    @Override
+//    protected KnowledgePresenter createPresenter() {
+//        return new KnowledgePresenter();
+//    }
 
     @Override
     protected int getLayoutId() {

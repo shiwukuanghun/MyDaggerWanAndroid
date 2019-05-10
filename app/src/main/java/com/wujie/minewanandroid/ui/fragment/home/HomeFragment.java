@@ -34,11 +34,6 @@ public class HomeFragment extends BaseFragment<HomePresenter, HomeContact.View> 
     private List<HomeBean> mDataList;
 
     @Override
-    protected HomePresenter createPresenter() {
-        return new HomePresenter();
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
     }

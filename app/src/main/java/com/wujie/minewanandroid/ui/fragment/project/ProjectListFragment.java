@@ -67,11 +67,6 @@ public class ProjectListFragment extends BaseFragment<ProjectListPresenter, Proj
     }
 
     @Override
-    protected ProjectListPresenter createPresenter() {
-        return new ProjectListPresenter();
-    }
-
-    @Override
     public void getProjectList(PageListDataBean<ProjectItemBean> pageListDataBean) {
         if (pageListDataBean.getDatas()!=null&&pageListDataBean.getDatas().size()>0) {
             mProjectListAdapter.setNewData(pageListDataBean.getDatas());

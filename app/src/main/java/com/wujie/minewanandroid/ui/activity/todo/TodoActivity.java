@@ -5,15 +5,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wujie.minewanandroid.BaseActivity;
 import com.wujie.minewanandroid.R;
 import com.wujie.minewanandroid.adapter.TodoPageAdapter;
-import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.util.ARouterUtils;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -41,11 +38,6 @@ public class TodoActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_todo;
-    }
-
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
     }
 
     @Override

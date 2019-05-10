@@ -1,6 +1,5 @@
 package com.wujie.minewanandroid.ui.activity;
 
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +8,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wujie.minewanandroid.BaseActivity;
 import com.wujie.minewanandroid.R;
-import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.util.ARouterUtils;
 import com.wujie.minewanandroid.util.Constant;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Time：2019/1/11 0011 上午 11:24
@@ -37,11 +32,6 @@ public class WebViewActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_webview;
-    }
-
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
     }
 
     @Override

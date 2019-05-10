@@ -1,29 +1,17 @@
 package com.wujie.minewanandroid;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
-import com.wujie.minewanandroid.adapter.HomeAdapter;
-import com.wujie.minewanandroid.bean.HomeBean;
-import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.ui.fragment.knowledage.KnowledgeFragment;
 import com.wujie.minewanandroid.ui.fragment.MineFragment;
 import com.wujie.minewanandroid.ui.fragment.navigation.NavigationFragment;
 import com.wujie.minewanandroid.ui.fragment.home.HomeFragment;
 import com.wujie.minewanandroid.ui.fragment.project.ProjectFragment;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -62,11 +50,6 @@ LinearLayout mActivityMain;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
-    }
-
-    @Override
-    protected BasePresenter createPresenter() {
-        return null;
     }
 
     @Override

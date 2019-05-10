@@ -60,8 +60,6 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseVi
 
     protected abstract int getLayoutId();
 
-    protected abstract P createPresenter();
-
     protected void init(View view) {
         attachView();
     }
